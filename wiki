@@ -1,1 +1,94 @@
-coming soon
+# AntiMultiAccount - Wiki
+
+---
+
+## # ENGLISH VERSION
+
+### Overview
+
+**AntiMultiAccount** is a simple and lightweight Minecraft plugin designed to detect and manage multiple accounts (alts) on your server. It allows server administrators to mark players as multi-accounts, assign them special ranks, and list all marked players. The plugin supports integration with LuckPerms for rank management and requires a MySQL database to store player data persistently.
+
+---
+
+### Features
+
+- Detect and manage multiple Minecraft accounts.
+- Assign special ranks to marked multi-accounts via LuckPerms.
+- List all marked players.
+- Support for 16 languages with easy switching via config.
+- Smart tab completion for `/ama` commands.
+- Reload command to refresh config and language files without server restart.
+
+---
+
+### Requirements
+
+- A running MySQL database is **required**. Without database connection, the plugin will not function properly.
+- LuckPerms plugin (optional but recommended for rank integration).
+- Minecraft server running Paper, Spigot, or compatible fork.
+
+---
+
+### Installation
+
+1. Download the latest version of the plugin `.jar` file.
+2. Place the `.jar` file into your server’s `plugins` folder.
+3. Start the server to generate default config and language files.
+4. Configure your MySQL database settings in `config.yml`.
+5. Restart or reload the server.
+6. Set the language and other options in `config.yml`.
+
+---
+
+### Configuration (`config.yml`)
+
+```yaml
+mysql:
+  host: localhost
+  port: 3306
+  database: anti_multi
+  username: root
+  password: your_password
+
+language: en  # Supported languages: en, pl, de, fr, es, it, ru, tr, pt, nl, cs, sk, uk, ro, hu, ja
+
+---
+
+### Command List
+
+Below is a full list of available commands, their aliases (if any), and what each command does.
+
+### 🔹 `/ama` 
+**Aliases:** `/antimultiaccount`  
+**Description:**  
+Base command for the AntiMultiAccount plugin. If used alone, it will display available subcommands with clickable suggestions and tab-completion.
+
+---
+
+### 🔹 `/ama info`
+**Aliases:** `/ama help
+**Description:**  
+Displays basic information about the plugin, current language, database status, and other useful info.
+
+---
+
+### 🔹 `/ama reload`
+**Description:**  
+Reloads the plugin configuration (`config.yml`) and all language translation files (`.yml`) without restarting the server.  
+Useful for applying changes after editing config or language files.
+
+---
+
+### 🔹 `/ama mark <player>`
+**Aliases:** `/ama select <player>`  
+**Description:**  
+Marks a player as a multi-account. This is stored in the database and can trigger role assignment (e.g., via LuckPerms).  
+Useful for manual admin control over suspicious accounts.
+
+---
+
+### 🔹 `/ama unmark <player>`
+**Aliases:** `/ama deselect <player>`  
+**Description:**  
+Unmarks a player that was previously marked as a multi-account. Removes the multi-account status from the database.
+
